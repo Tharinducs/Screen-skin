@@ -22,6 +22,7 @@ module.exports = {
           _store: './src/store',
           _styles: './src/styles',
           _helpers: './src/helpers',
+          _utils:'./src/utils'
         },
       },
     ],

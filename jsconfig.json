@@ -8,8 +8,8 @@
       "_screens*": ["src/screens*"],
       "_store*": ["src/store*"],
       "_styles*": ["src/styles*"],
-      "_utils*": ["src/utils*"],
-      "_helpers*":["src/helpers"]
+      "_helpers*":["src/helpers"],
+      "_utils*":["src/utils"]
     }
   }
 }
