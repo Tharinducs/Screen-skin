@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image,ToastAndroid } from 'react-native'
 import { connect } from 'react-redux';
 import styles from './questionsscreenstyle'
 import QuestionList from '_components/questionlist';
 import { submitAnswerOther } from '_store/actions/questionActions';
+import { API_URL } from '_helpers/constants';
 
 const OtherPredictions = (props) => {
 
@@ -30,7 +31,7 @@ const OtherPredictions = (props) => {
         <View style={styles.patientView}>
             <View style={styles.topBar}><Text style={styles.topBarText}>Survay</Text></View>
             <View style={styles.imageContainer}>
-                <View style={styles.imageColumn}>{((props.image.imageUploadSuccessData || {}).user_details || {}).file_path ? <Image source={{ uri: props.image.imageUploadSuccessData.user_details.file_path }} style={styles.userImage} /> : <Text>No Image Data</Text>}</View>
+                <View style={styles.imageColumn}>{((props.image.imageUploadSuccessData || {}).user_details || {}).file_path ? <Image source={{ uri: `${API_URL}/${((props.image.imageUploadSuccessData || {}).user_details || {}).url}` }} defaultSource={require('_assets/images/loader.png')} style={styles.userImage} /> : <Text>No Image Data</Text>}</View>
                 <View style={styles.textColumn}>
                     <Text style={styles.textrow1}>It is not a Bacterial,Fungi or Viral.</Text>
                     <Text style={styles.textrow2}>Please Answer the below questions to identify more</Text>

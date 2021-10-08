@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styles from './questionsscreenstyle'
 import QuestionList from '_components/questionlist';
 import { submitAnswerCategory1 } from '_store/actions/questionActions';
+import { API_URL } from '_helpers/constants';
 
 const Questions = (props) => {
     useEffect(()=>{
@@ -31,7 +32,7 @@ const Questions = (props) => {
         <View style={styles.patientView}>
             <View style={styles.topBar}><Text style={styles.topBarText}>Survay</Text></View>
             <View style={styles.imageContainer}>
-                <View style={styles.imageColumn}>{((props.image.imageUploadSuccessData || {}).user_details || {}).file_path ? <Image source={{ uri: props.image.imageUploadSuccessData.user_details.file_path }} style={styles.userImage} /> : <Text>No Image Data</Text>}</View>
+                <View style={styles.imageColumn}>{((props.image.imageUploadSuccessData || {}).user_details || {}).file_path ? <Image source={{ uri: `${API_URL}${((props.image.imageUploadSuccessData || {}).user_details || {}).url}` }} defaultSource={require('_assets/images/loader.png')} style={styles.userImage} /> : <Text>No Image Data</Text>}</View>
                 <View style={styles.textColumn}>
                     <Text style={styles.textrow1}>Captured Successfull.</Text>
                     <Text style={styles.textrow2}>Please Answer the below questions</Text>

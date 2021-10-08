@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     textColumn:{
         flexDirection:'column',
         justifyContent:'center',
-        flex:1
+        flex:1,
+        paddingTop:10
     },
     userImage:{
         width:120,
@@ -66,6 +67,12 @@ const styles = StyleSheet.create({
         marginBottom:20,
         fontWeight:'700',
         fontSize: normalize(18),
+    },
+    textrow4:{
+        marginTop: -10,
+        marginBottom:20,
+        fontWeight:'700',
+        fontSize: normalize(15),
     },
     clickButton: {
         backgroundColor: '#ffff8a',

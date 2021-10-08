@@ -8,11 +8,12 @@ import useIsLargeDevice from '_utils/largeDevice'
 import { launchCamera } from 'react-native-image-picker';
 import { uploadImage } from '_store/actions/imageActions'
 
-const handleCamera = (uploadPicture) => {
+const handleCamera = (uploadPicture,setLoader) => {
     const options = {
         title: "Take snapshot of deceased area",
         mediaType: 'photo',
-        quality: 1,
+        quality: 0.5,
+        includeBase64:true,
 
         storageOptions: {
             skipBackup: true,
@@ -29,10 +30,11 @@ const handleCamera = (uploadPicture) => {
             } else {
                 if ((response || {}).assets && (response || {}).assets.length > 0) {
                     var responseData = (response || {}).assets[0];
-                    responseData.uri = Platform.OS === 'android'
-                        ? responseData.uri
-                        : responseData.uri.replace('file://', '')
-                    uploadPicture(responseData);
+                    // responseData.uri = Platform.OS === 'android'
+                    //     ? responseData.uri
+                    //     : responseData.uri.replace('file://', '')
+                    setLoader(true);
+                    uploadPicture(responseData.base64);
                 }
             }
         });
@@ -46,7 +48,6 @@ const Home = (props) => {
     const isLargeDevice = useIsLargeDevice();
     useEffect(()=>{
         if(props.image.imageUploadSuccessData != null){
-            setLoader(true);
             props.navigation.navigate('questions');
             setTimeout(()=>{
                 setLoader(false);
@@ -68,13 +69,13 @@ const Home = (props) => {
 
     return (
         <>
-            {props.image.imageUploadLoader || loader ? <View style={[styles.container, styles.horizontal]}><ActivityIndicator size={80}/></View> : <View style={styles.patientView}>
+            {loader || props.image.imageUploadLoader ? <View style={[styles.container, styles.horizontal]}><ActivityIndicator size={80}/></View> : <View style={styles.patientView}>
                 <View style={styles.imageContainer}>
                     <Image source={skinImage} style={styles.image} resizeMode={Platform.OS === 'android' ? 'center' : 'contain'} />
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>Take a snapshot of your deceased area</Text>
-                    <TouchableOpacity style={isLargeDevice ? styles.largeClickButton : styles.clickButton} onPress={() => handleCamera(props.uploadImage)}>
+                    <TouchableOpacity style={isLargeDevice ? styles.largeClickButton : styles.clickButton} onPress={() => handleCamera(props.uploadImage,setLoader)}>
                         <Text style={styles.clickButtonText}>
                             Click Here
                         </Text>

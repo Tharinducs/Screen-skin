@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image ,ToastAndroid} from 'react-native'
 import { connect } from 'react-redux';
 import styles from './questionsscreenstyle'
 import QuestionList from '_components/questionlist';
@@ -30,7 +30,7 @@ const QuestionsCategory2 = (props) => {
     return (
         <View style={styles.patientView}>
             <View style={styles.topBar}><Text style={styles.topBarText}>Survay</Text></View>
-            {(props.questions.submitAnswerCategory1Data || {}).questions && (props.questions.submitAnswerCategory1Data || {}).questions.length > 0 && <QuestionList questions={(props.questions.submitAnswerCategory1Data || {}).questions} userDetails={props.questions.submitAnswerCategory1Data ? (props.questions.submitAnswerCategory1Data || {}).user_details : null} loader={props.questions.submitAnswerCategory2Loader} submitAnswers={props.submitAnswerCategory2} />}
+            {(props.questions.submitAnswerCategory1Data || {}).questions && (props.questions.submitAnswerCategory1Data || {}).questions.length > 0 && <QuestionList questions={(props.questions.submitAnswerCategory1Data || {}).questions} userDetails={props.questions.submitAnswerCategory1Data ? (props.questions.submitAnswerCategory1Data || {}).user_details : null} loader={props.questions.submitAnswerCategory2Loader} submitAnswers={props.submitAnswerCategory2} prediction={(props.questions.submitAnswerCategory1Data || {}).prediction} type={(props.questions.submitAnswerCategory1Data || {}).type}/>}
         </View>
     )
 }

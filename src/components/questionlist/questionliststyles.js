@@ -5,7 +5,8 @@ import normalize from "../../utils/fontsize"
 const styles = StyleSheet.create({
     radioButtonRow: {
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems:'center',
+        flex:1
     },
     questionContainer: {
         backgroundColor: '#f3f3f3',
@@ -28,7 +29,9 @@ const styles = StyleSheet.create({
         fontWeight:'700',
         fontSize: normalize(15),
         letterSpacing:1,
-        textAlign:'left'
+        textAlign:'left',
+        flexWrap:'wrap',
+        paddingRight:70
     },
     questionText:{
         fontWeight:'700',

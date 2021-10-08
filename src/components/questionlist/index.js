@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text, TouchableOpacity,ActivityIndicator } from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { RadioButton } from 'react-native-paper';
@@ -32,17 +32,21 @@ const getValidationSchema = (questions) => {
 
 
 const QuestionList = (props) => {
-    const { questions,submitAnswers, userDetails,loader } = props
+    const { questions, submitAnswers, userDetails, loader, prediction, type } = props
     const formik = useFormik({
         initialValues: setInitialValues(questions),
         onSubmit: values => {
-            const formData= {
-                "user_details":{
+            const formData = {
+                "user_details": {
                     ...userDetails
                 },
-                "questions":{
+                "questions": {
                     ...values
-                }
+                },
+                "prediction": prediction ? {
+                    ...prediction
+                } : null,
+                "type":type || 0
             }
 
             submitAnswers(formData)
@@ -57,7 +61,7 @@ const QuestionList = (props) => {
                         return <>
                             <View key={index}>
                                 <Text style={styles.questionText}>{index + 1}.{(item || {}).question}</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between',flex:1 }}>
                                     <RadioButton.Group onValueChange={newValue => formik.setFieldValue((item || {}).shortcode, newValue)} value={formik.values[(item || {}).shortcode]}>
                                         {(item || {}).answers && (item || {}).answers.length > 0 && (item || {}).answers.map((answerItem, indexID) => {
                                             let key = Object.keys(answerItem)[0];
@@ -77,7 +81,7 @@ const QuestionList = (props) => {
             </ScrollView>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={isLargeDevice ? styles.largeClickButton : styles.clickButton} onPress={formik.handleSubmit} disabled={loader}>
-                    {loader ? <ActivityIndicator size={20}/> :<Text style={styles.clickButtonText}>
+                    {loader ? <ActivityIndicator size={20} /> : <Text style={styles.clickButtonText}>
                         Submit
                     </Text>}
                 </TouchableOpacity>
