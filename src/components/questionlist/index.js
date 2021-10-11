@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, ScrollView, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useFormik } from 'formik'
+import Icon from 'react-native-vector-icons/Ionicons';
 import * as Yup from 'yup'
 import { RadioButton } from 'react-native-paper';
 import styles from '_components/questionlist/questionliststyles';
@@ -81,9 +82,9 @@ const QuestionList = (props) => {
             </ScrollView>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={isLargeDevice ? styles.largeClickButton : styles.clickButton} onPress={formik.handleSubmit} disabled={loader}>
-                    {loader ? <ActivityIndicator size={20} /> : <Text style={styles.clickButtonText}>
+                    {loader ? <ActivityIndicator size={20} /> : <><Icon name="rocket-outline" size={30} color="#ffffff" /><Text style={styles.clickButtonText}>
                         Submit
-                    </Text>}
+                    </Text></>}
                 </TouchableOpacity>
             </View>
         </View>

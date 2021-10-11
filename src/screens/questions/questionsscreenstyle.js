@@ -6,10 +6,12 @@ const styles = StyleSheet.create({
     patientView: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#000000',
+        paddingRight:10,
+        paddingLeft:10
     },
     topBar :{
-        backgroundColor:'#f3f3f3',
+        backgroundColor:'#B2BEB5',
         height:'10%',
         borderBottomLeftRadius:25,
         borderBottomRightRadius:25,
@@ -20,16 +22,19 @@ const styles = StyleSheet.create({
     topBarText:{
         fontWeight:'700',
         fontSize: normalize(15),
-        letterSpacing:1
+        letterSpacing:1,
+        textAlign:'justify'
     },
     imageContainer:{
-        backgroundColor:'#f3f3f3',
+        backgroundColor:'#B2BEB5',
         borderRadius:30,
         marginTop:25,
         flexDirection:"row",
         justifyContent:'space-between',
         paddingRight:10,
-        paddingLeft:20
+        paddingLeft:20,
+        marginLeft:10,
+        marginRight:10
     },
     imageColumn:{
         flexDirection:'column',

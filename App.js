@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#ffff8a" />
+      <StatusBar barStyle="dark-content" backgroundColor="#B2BEB5" />
       <Provider store={store}>
         <RootNaviagtor />
       </Provider>

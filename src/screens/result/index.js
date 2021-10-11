@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView,ToastAndroid } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import styles from './resultscreenstyle'
 import useIsLargeDevice from '_utils/largeDevice';
@@ -8,10 +9,11 @@ import { API_URL } from '_helpers/constants';
 
 
 const Result = (props) => {
+    const [bgColor,setBgColour] = useState("#B2BEB5")
     const result = props.route.params.from == 'disease' ? props.questions.submitAnswerCategory2Data : props.route.params.from == 'other' ? props.questions.submitAnswerOtherData : null;
     const isLargeDevice = useIsLargeDevice();
     return (<View style={styles.patientView}>
-        <View style={styles.topBar}><Text style={styles.topBarText}>Survay</Text></View>
+        <View style={styles.topBar}><Text style={styles.topBarText}>Result</Text></View>
         <View style={styles.imageContainer}>
             <View style={styles.imageColumn}>{((props.image.imageUploadSuccessData || {}).user_details || {}).file_path ? <Image source={{ uri: `${API_URL}/${((props.image.imageUploadSuccessData || {}).user_details || {}).url}` }} defaultSource={require('_assets/images/loader.png')} style={styles.userImage} /> : <Text>No Image Data</Text>}</View>
             <View style={styles.textColumn}>
@@ -25,11 +27,13 @@ const Result = (props) => {
         </View>
         {result && (result || {}).guideline && <View style={styles.guidlineContainer}><Text style={styles.guideline}>Guideline :</Text><ScrollView ><Text style={styles.guideline}>{(result || {}).guideline}</Text></ScrollView></View>}
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={isLargeDevice ? styles.largeClickButton : styles.clickButton} onPress={()=>{
+            <TouchableOpacity style={isLargeDevice ? [styles.largeClickButton,{backgroundColor:bgColor}] : [styles.clickButton,{backgroundColor:bgColor}]} onFocus={()=>{
+              setBgColour("#B2BEB5")
+            }} onPress={()=>{
                 props.clearData()
                 props.navigation.navigate('home');
             }}>
-                <Text style={styles.clickButtonText}>
+                <Icon name="reload-circle" size={30} color="#ffffff" /><Text style={styles.clickButtonText}>
                     Test Again
                 </Text>
             </TouchableOpacity>

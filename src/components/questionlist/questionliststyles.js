@@ -5,11 +5,11 @@ import normalize from "../../utils/fontsize"
 const styles = StyleSheet.create({
     radioButtonRow: {
         flexDirection: 'row',
-        alignItems:'center',
-        flex:1
+        alignItems: 'center',
+        flex: 1
     },
     questionContainer: {
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#B2BEB5',
         paddingLeft: 15,
         paddingRight: 15,
         paddingBottom: 15,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
     },
     container: {
-        flex:1,
+        flex: 1,
         marginTop: 20,
         borderRadius: 30,
         paddingLeft: 10,
@@ -25,32 +25,22 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         paddingTop: 15
     },
-    answerText:{
-        fontWeight:'700',
+    answerText: {
+        fontWeight: '700',
         fontSize: normalize(15),
-        letterSpacing:1,
-        textAlign:'left',
-        flexWrap:'wrap',
-        paddingRight:70
+        letterSpacing: 1,
+        textAlign: 'left',
+        flexWrap: 'wrap',
+        paddingRight: 70
     },
-    questionText:{
-        fontWeight:'700',
+    questionText: {
+        fontWeight: '700',
         fontSize: normalize(15),
-        letterSpacing:1,
+        letterSpacing: 1,
+        textAlign: 'justify'
     },
     clickButton: {
-        backgroundColor: '#ffff8a',
-        width: 150,
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingTop: 15,
-        paddingBottom: 15,
-        alignItems: 'center',
-        marginTop: 25,
-        borderRadius: 8
-    },
-    largeClickButton: {
-        backgroundColor: '#ffff8a',
+        backgroundColor: '#B2BEB5',
         width: 250,
         paddingLeft: 30,
         paddingRight: 30,
@@ -58,17 +48,33 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         alignItems: 'center',
         marginTop: 25,
-        borderRadius: 8
+        borderRadius: 8,
+        justifyContent:'space-around',
+        flexDirection:'row',
+    },
+    largeClickButton: {
+        backgroundColor: '#B2BEB5',
+        width: 250,
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 15,
+        paddingBottom: 15,
+        alignItems: 'center',
+        marginTop: 25,
+        borderRadius: 8,
+        justifyContent:'space-around',
+        flexDirection:'row',
     },
     clickButtonText: {
         fontWeight: '700',
-        fontSize: normalize(12),
+        fontSize: normalize(15),
         fontFamily: 'sans-serif-condensed',
-        letterSpacing: 1
+        letterSpacing: 1,
+        color: '#ffffff'
     },
-    buttonContainer:{
-        justifyContent:'center',
-        alignItems:'center'
+    buttonContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

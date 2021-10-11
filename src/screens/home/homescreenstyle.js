@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     patientView: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#000000',
     },
     imageContainer: {
         flex: 1,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: '#ffb575',
+        color: '#B2BEB5',
         textAlign: 'center',
         fontWeight: '700',
         fontSize: normalize(13),
@@ -38,18 +38,21 @@ const styles = StyleSheet.create({
         letterSpacing: 1
     },
     clickButton: {
-        backgroundColor: '#ffff8a',
-        width: 150,
+        backgroundColor: '#B2BEB5',
+        color:'#ffffff',
+        width: 250,
         paddingLeft: 30,
         paddingRight: 30,
         paddingTop: 15,
         paddingBottom: 15,
-        alignItems: 'center',
         marginTop: 25,
-        borderRadius: 8
+        borderRadius: 8,
+        justifyContent:'space-around',
+        flexDirection:'row',
+        alignItems:'center',
     },
     largeClickButton: {
-        backgroundColor: '#ffff8a',
+        backgroundColor: '#B2BEB5',
         width: 250,
         paddingLeft: 30,
         paddingRight: 30,
@@ -57,17 +60,23 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         alignItems: 'center',
         marginTop: 25,
-        borderRadius: 8
+        borderRadius: 8,
+        justifyContent:'space-around',
+        flexDirection:'row',
     },
     clickButtonText: {
         fontWeight: '700',
-        fontSize: normalize(12),
+        color:'#ffffff',
+        fontSize: normalize(15),
         fontFamily: 'sans-serif-condensed',
-        letterSpacing: 1
+        letterSpacing: 1,
+        textAlign:'justify',
+        marginLeft:25
     },
     container: {
         flex: 1,
         justifyContent: "center",
+        backgroundColor:'#000000'
     },
     horizontal: {
         flexDirection: "row",
