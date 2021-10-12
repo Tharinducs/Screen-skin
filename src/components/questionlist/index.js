@@ -7,30 +7,13 @@ import { RadioButton } from 'react-native-paper';
 import styles from '_components/questionlist/questionliststyles';
 import useIsLargeDevice from '_utils/largeDevice';
 
-
-
 const setInitialValues = (questions) => {
     let initialValues = {}
-
     questions.map((item, index) => {
         initialValues[(item || {}).shortcode] = ""
     })
-
     return initialValues;
-
 }
-
-const getValidationSchema = (questions) => {
-    let validation = {}
-    questions.map((item, index) => {
-        let schema = Yup.string().required('Required')
-        validation[(item || {}).shortcode] = schema;
-    })
-
-    return validation;
-
-}
-
 
 const QuestionList = (props) => {
     const { questions, submitAnswers, userDetails, loader, prediction, type } = props
