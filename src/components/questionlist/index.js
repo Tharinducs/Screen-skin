@@ -30,7 +30,7 @@ const QuestionList = (props) => {
                 "prediction": prediction ? {
                     ...prediction
                 } : null,
-                "type":type || 0
+                "type": type || 0
             }
 
             submitAnswers(formData)
@@ -42,24 +42,21 @@ const QuestionList = (props) => {
             <ScrollView>
                 <View style={styles.questionContainer}>
                     {questions.map((item, index) => {
-                        return <>
-                            <View key={index}>
-                                <Text style={styles.questionText}>{index + 1}.{(item || {}).question}</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between',flex:1 }}>
-                                    <RadioButton.Group onValueChange={newValue => formik.setFieldValue((item || {}).shortcode, newValue)} value={formik.values[(item || {}).shortcode]}>
-                                        {(item || {}).answers && (item || {}).answers.length > 0 && (item || {}).answers.map((answerItem, indexID) => {
-                                            let key = Object.keys(answerItem)[0];
-                                            let value = answerItem[key];
-                                            return <View style={styles.radioButtonRow} key={indexID}>
-                                                <View><RadioButton value={key} /></View>
-                                                <View><Text style={styles.answerText}>{value}</Text></View>
-                                            </View>
-                                        })}
-                                    </RadioButton.Group>
-                                </View>
-
+                        return <View key={index}>
+                            <Text style={styles.questionText}>{index + 1}.{(item || {}).question}</Text>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
+                                <RadioButton.Group onValueChange={newValue => formik.setFieldValue((item || {}).shortcode, newValue)} value={formik.values[(item || {}).shortcode]}>
+                                    {(item || {}).answers && (item || {}).answers.length > 0 && (item || {}).answers.map((answerItem, indexID) => {
+                                        let key = Object.keys(answerItem)[0];
+                                        let value = answerItem[key];
+                                        return <View style={styles.radioButtonRow} key={indexID}>
+                                            <View><RadioButton value={key} /></View>
+                                            <View><Text style={styles.answerText}>{value}</Text></View>
+                                        </View>
+                                    })}
+                                </RadioButton.Group>
                             </View>
-                        </>
+                        </View>
                     })}
                 </View>
             </ScrollView>

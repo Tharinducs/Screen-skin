@@ -1,5 +1,5 @@
 
-export const API_URL = "http://3.144.154.235:8080"
+export const API_URL = "http://3.131.128.186:8080"
 
 export const UPLOAD_IMAGE_SUCCESS = "UPLOAD_IMAGE_SUCCESS"
 export const UPLOAD_IMAGE_ERROR = "UPLOAD_IMAGE_ERROR"
